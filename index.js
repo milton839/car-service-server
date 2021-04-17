@@ -24,6 +24,7 @@ client.connect(err => {
   const serviceCollection = client.db("carService839").collection("services");
   const reviewsCollection = client.db("carService839").collection("reviews");
   const ordersCollection = client.db("carService839").collection("orders");
+  const adminCollection = client.db("carService839").collection("admin");
 
 
   app.post('/addService', (req, res) =>{
@@ -48,6 +49,22 @@ client.connect(err => {
     .then(result => {
         res.send(result.insertedCount > 0)
     })
+  })
+
+  app.post('/addAdmin/', (req, res) => {
+    const admin = req.body;
+    adminCollection.insertOne(admin)
+    .then(result => {
+        res.send(result.insertedCount > 0)
+    })
+  })
+
+  app.post('/isAdmin', (req, res) => {
+    const email = req.body.email;
+    adminCollection.find({ email: email })
+        .toArray((err, admin) => {
+            res.send(admin.length > 0);
+        })
   })
 
   app.get('/services',(req,res) => {

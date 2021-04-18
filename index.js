@@ -68,14 +68,14 @@ client.connect(err => {
   })
 
   app.get('/services',(req,res) => {
-    serviceCollection.find({})
+    serviceCollection.find({}).sort({_id:-1}).limit(4)
     .toArray((err, documents) => {
       res.send(documents);
     })
   })
 
   app.get('/reviews',(req,res) => {
-    reviewsCollection.find({})
+    reviewsCollection.find({}).sort({_id:-1}).limit(3)
     .toArray((err, documents) => {
       res.send(documents);
     })

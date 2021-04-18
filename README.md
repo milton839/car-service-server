@@ -6,7 +6,6 @@
     3.Delete method
     4.dynamic route
     5.get data from orders for specific User by authentication loggedInUser email
-    6.Use data limit and descending order method 
 
 ### My github repository link
 https://github.com/Porgramming-Hero-web-course/complete-website-server-milton839
